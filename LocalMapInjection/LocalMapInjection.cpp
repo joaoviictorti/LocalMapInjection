@@ -42,7 +42,7 @@ int main() {
 		return EXIT_FAILURE;
 	}
 
-	cout << "[+] Memory Allocate: " << hex << address << endl;
+	cout << "[+] Allocated memory address: " << hex << address << endl;
 
 	memcpy(address, shellcode, sizeof(shellcode));
 
